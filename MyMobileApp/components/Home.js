@@ -24,6 +24,17 @@ export default function Home() {
     { label: "EUR", value: "EUR" },
   ];
 
+  const convertCurrency = () => {
+    if (!amount || isNaN(amount)) {
+      setError("Please enter a valid amount");
+      return;
+    }
+    setError("");
+    const rate = conversionRates[fromCurrency][toCurrency];
+    const result = parseFloat(amount) * rate;
+    setConvertedAmount(result.toFixed(2));
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Currency Converter</Text>
