@@ -53,6 +53,14 @@ export default function Home() {
 
       <Button title="Convert" onPress={convertCurrency} />
 
+      {convertedAmount ? (
+        <Text style={styles.result}>
+          Converted Amount: {convertedAmount} {toCurrency}
+        </Text>
+      ) : null}
+
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+
     </View>
   );
 }
