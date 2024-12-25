@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Divider, TextInput } from 'react-native-paper';
+import React, { useState } from "react";
+import { StyleSheet, View, TextInput, Button, Text } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 
 export default function Home() {
   const [amount, setAmount] = useState("");
@@ -11,6 +11,18 @@ export default function Home() {
 
   const [fromCurrencyOpen, setFromCurrencyOpen] = useState(false);
   const [toCurrencyOpen, setToCurrencyOpen] = useState(false);
+
+  const conversionRates = {
+    USD: { LKR: 320, EUR: 0.85 },
+    LKR: { USD: 0.0031, EUR: 0.0026 },
+    EUR: { USD: 1.18, LKR: 380 },
+  };
+
+  const currencyOptions = [
+    { label: "USD", value: "USD" },
+    { label: "LKR", value: "LKR" },
+    { label: "EUR", value: "EUR" },
+  ];
 
   return (
     <View style={styles.container}>
