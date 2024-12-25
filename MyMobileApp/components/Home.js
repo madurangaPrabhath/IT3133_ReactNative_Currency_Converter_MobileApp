@@ -1,41 +1,56 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Text, Divider, TextInput } from 'react-native-paper';
+import { Divider, TextInput } from 'react-native-paper';
 
 export default function Home() {
-  const [baseCurrency, setBaseCurrency] = useState('USD');
-  const [targetCurrency, setTargetCurrency] = useState('EUR');
-  const [amount, setAmount] = useState('');
-  const [result, setResult] = useState(null);
+  const [amount, setAmount] = useState("");
+  const [fromCurrency, setFromCurrency] = useState("USD");
+  const [toCurrency, setToCurrency] = useState("LKR");
+  const [convertedAmount, setConvertedAmount] = useState("");
+  const [error, setError] = useState("");
+
+  const [fromCurrencyOpen, setFromCurrencyOpen] = useState(false);
+  const [toCurrencyOpen, setToCurrencyOpen] = useState(false);
 
   return (
-    <View>
-      <Text variant="displayMedium">Currency Converter</Text>
-      <Divider />
-
-      <Text style={styles.label}>Base Currency:</Text>
-      <TextInput
-        label="Base Currency"
-        mode="outlined"
-        value={baseCurrency}
-        onChangeText={setBaseCurrency}
-        style={styles.input} />
-
-      <Text style={styles.label}>Target Currency:</Text>
-      <TextInput
-        label="Target Currency"
-        mode="outlined"
-        value={targetCurrency}
-        onChangeText={setTargetCurrency}
-        style={styles.input} />
+    <View style={styles.container}>
+      <Text style={styles.title}>Currency Converter</Text>
 
       <Text style={styles.label}>Amount:</Text>
       <TextInput
-        label="Amount"
-        mode="outlined"
+        style={styles.input}
+        placeholder="Enter amount"
+        keyboardType="numeric"
         value={amount}
         onChangeText={setAmount}
-        style={styles.input} />
+      />
+
+      <Text style={styles.label}>From Currency:</Text>
+      <DropDownPicker
+        open={fromCurrencyOpen}
+        value={fromCurrency}
+        items={currencyOptions}
+        setOpen={setFromCurrencyOpen}
+        setValue={setFromCurrency}
+        setItems={() => {}}
+        style={styles.dropdown}
+        placeholder="Select currency"
+        dropDownContainerStyle={styles.dropdownContainer}
+      />
+
+      <Text style={styles.label}>To Currency:</Text>
+      <DropDownPicker
+        open={toCurrencyOpen}
+        value={toCurrency}
+        items={currencyOptions}
+        setOpen={setToCurrencyOpen}
+        setValue={setToCurrency}
+        setItems={() => {}}
+        style={styles.dropdown}
+        placeholder="Select currency"
+        dropDownContainerStyle={styles.dropdownContainer}
+      />
+
     </View>
-  )
+  );
 }
