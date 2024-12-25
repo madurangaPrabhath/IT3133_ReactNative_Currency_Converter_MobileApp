@@ -32,7 +32,7 @@ export default function Home() {
         items={currencyOptions}
         setOpen={setFromCurrencyOpen}
         setValue={setFromCurrency}
-        setItems={() => {}}
+        setItems={() => { }}
         style={styles.dropdown}
         placeholder="Select currency"
         dropDownContainerStyle={styles.dropdownContainer}
@@ -45,11 +45,13 @@ export default function Home() {
         items={currencyOptions}
         setOpen={setToCurrencyOpen}
         setValue={setToCurrency}
-        setItems={() => {}}
+        setItems={() => { }}
         style={styles.dropdown}
         placeholder="Select currency"
         dropDownContainerStyle={styles.dropdownContainer}
       />
+
+      <Button title="Convert" onPress={convertCurrency} />
 
     </View>
   );
