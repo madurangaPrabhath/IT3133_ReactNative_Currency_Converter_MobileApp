@@ -10,7 +10,7 @@ export default function App() {
       <SafeAreaView>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Home />
             <StatusBar style="auto" />
           </View>
         </KeyboardAvoidingView>
@@ -25,5 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 60
   },
 });
